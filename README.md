@@ -1,1 +1,2 @@
 # JusReign-Bot
+# JusReignBot

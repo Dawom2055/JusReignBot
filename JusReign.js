@@ -5,12 +5,10 @@ client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) { // Prevent bot from responding to its own messages
         return
     }
-    if (receivedMessage.content.startsWith("!")) {
+    if (receivedMessage.content.startsWith("$")) {
         processCommand(receivedMessage)
     }
-    if (receivedMessage.content.startsWith("#")) {
-        processCommand(receivedMessage)
-    }
+
 })
 
 client.on('ready', () => {
@@ -28,7 +26,7 @@ function processCommand(receivedMessage) {
     console.log("Command received: " + primaryCommand)
     console.log("Arguments: " + arguments) // There may not be any arguments
 
-    if (primaryCommand == "help") {
+    if (primaryCommand == "helpmeJusReign") {
         helpCommand(arguments, receivedMessage)
     } else if (primaryCommand == "multiply") {
         multiplyCommand(arguments, receivedMessage)
@@ -46,14 +44,16 @@ function processCommand(receivedMessage) {
         dontknow(arguments, receivedMessage)
     } else if (primaryCommand == 'business' || primaryCommand == 'accounting'){
         accounting(arguments, receivedMessage)
+    } else if (primaryCommand == 'hello'){
+        hello(arguments, receivedMessage)
     } else {
-        receivedMessage.channel.send("I don't understand the command. Try `!help` or `!multiply`")
+        receivedMessage.channel.send("What did you just said to me? Try $helpmeJusReign cmon man.")
     }
 }
 
 function helpCommand(arguments, receivedMessage) {
     if (arguments) {
-        receivedMessage.channel.send("My Prefix is '!' try one of my following commands: \n " + "multiply (Ex. 2 4 10) \n strong \n friends \n daal \n vibe \n tuff \n scientist \n engineer \n doctor \n accounting \n business ")
+        receivedMessage.channel.send("My Prefix is '!' try one of my following commands: \n " + "multiply (Ex. 2 4 10) \n strong \n friends \n daal \n vibe \n tuff \n scientist \n engineer \n doctor \n accounting \n business \n hello")
 }
 }
 
@@ -111,5 +111,12 @@ function accounting(arguments, receivedMessage){
         receivedMessage.channel.send("https://media1.tenor.com/images/a85123d84432d39393a534f25d6c9a1e/tenor.gif?itemid=5441328")
     }
 }
+
+function hello(arguments, receivedMessage){
+    if(arguments) {
+        receivedMessage.channel.send("BONJOUR")
+    }
+}
+
 
 client.login("NzY1MTEzNzgzMDA5MDE3ODg2.X4QFvA.7y3ZpfxVi-ZeqYEDrw2HuTeyDwU")
